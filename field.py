@@ -39,7 +39,7 @@ class Field:
             f_size (int): フィールドのサイズ
         """
 
-        pass    
+        pass
         self.f_size = f_size
         self.field = [["　" for _ in range(f_size)] for _ in range(f_size)]
         self.players = players
