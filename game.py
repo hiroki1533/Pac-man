@@ -1,9 +1,6 @@
 import time
 from player import Player
-from enemy import Enemy
-from food import Food
-from block import Block
-from aaa import Field
+from field import Field
 from user_input import UserInput
 from config import Parameters
 from random import randint
