@@ -1,4 +1,7 @@
-class Player():
+from item import Item
+
+
+class Player(Item):
     """プレイヤークラス
     Itemを継承して作成したプレイヤークラス.
     入力から移動方向を受け取って移動しようとする方向を計算するメソッドと
