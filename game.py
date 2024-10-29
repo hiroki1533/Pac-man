@@ -67,8 +67,7 @@ class Game:
                 key = UserInput.get_user_input()
                 player.get_next_pos(key)
 
-
-            # fieldを更新
+                # fieldを更新
             self.field.update_field()
 
             # 一定の間隔で処理を繰り返す
