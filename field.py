@@ -1,5 +1,6 @@
 from player import Player
 
+
 class Field:
     """Fieldクラス
     Fieldクラスは、ゲームのフィールドを表すクラスです。
@@ -33,8 +34,6 @@ class Field:
 
         pass
     """
-    
-
         self.f_size = f_size
         self.field = [["　" for _ in range(f_size)] for _ in range(f_size)]
         self.players = players
@@ -85,8 +84,6 @@ class Field:
         return self.field
         """
 
-
-    # Fieldを表示する関数
     def display_field(self) -> None:
         """
         Fieldを表示する関数
@@ -101,18 +98,14 @@ class Field:
             s: 下に移動
             d: 右に移動
              p1
-            
-            
-        """
+    """
         pass
     """
-    
         # 動きか方を表示
         print("w: 上に移動")
         print("a: 左に移動")
         print("s: 下に移動")
         print("d: 右に移動")
-
         # self.fieldを表示する処理を記述
         max_width = max(len(row) for row in self.field)  # フィールド内の最大幅を取得
 

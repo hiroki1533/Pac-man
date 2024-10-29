@@ -3,7 +3,6 @@ from player import Player
 from field import Field
 from user_input import UserInput
 from config import Parameters
-from random import randint
 import logging
 import os
 
