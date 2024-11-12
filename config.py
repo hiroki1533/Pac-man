@@ -23,9 +23,11 @@ class Parameters:
     プログラム全体を通して共通のパラメータを保持するクラス．
     ここにプロジェクト内で使うパラメータを一括管理する．
     """
+
     args: dict = field(default_factory=lambda: {})  # コマンドライン引数
     run_date: str = ''  # 実行時の時刻
     git_revision: str = ''  # 実行時のプログラムのGitのバージョン
+    field_size: int = 12  # フィールドサイズ フィールドの1辺の長さ
 
     param1: int = 0  # パラメータを定義する例
     param2: dict = field(default_factory=lambda: {'k1': 'v1', 'k2': 'v2'})

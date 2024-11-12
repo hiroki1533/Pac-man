@@ -11,7 +11,6 @@ class Field:
 
     Attributes:
         players (list[Player]): プレイヤーのリスト
-        enemies (list[Enemy]): 敵のリスト
         field (list[list[str]]): フィールドの情報
         f_size (int): フィールドのサイズ
     """
@@ -27,16 +26,16 @@ class Field:
 
         Args:
             players (list[Player]): プレイヤーのリスト
-            enemies (list[Enemy]): 敵のリスト
             f_size (int): フィールドのサイズ
         """
+        
+    
         self.f_size = f_size
         self.field = [["　" for _ in range(f_size)] for _ in range(f_size)]
         self.players = players
-        self.enemies = enemies
-
         # それぞれのアイテムの位置をFieldに反映
         self.update_field()
+    
 
     def update_field(self) -> list[list[str]]:
         """
@@ -66,16 +65,13 @@ class Field:
             >>> field.update_field()[1]
             ['f1', 'e2', '\\u3000']
             >>> field.update_field()[2]
-            ['b1', 'b2', '\\u3000']
+            ['\\u3000', '\\u3000', '\\u3000']
         """
         # fieldを一旦すべて空白にする
         for i in range(len(self.field)):
             for j in range(len(self.field[i])):
                 self.field[i][j] = "　"
         #  Fieldを更新する処理を記述
-        for enemy in self.enemies:
-            if enemy.status:
-                self.field[enemy.now_y][enemy.now_x] = enemy.icon
         for player in self.players:
             if player.status:
                 self.field[player.now_y][player.now_x] = player.icon
@@ -141,10 +137,8 @@ class Field:
             a: 左に移動
             s: 下に移動
             d: 右に移動
-            　p1e1
-            f1e2　
-            b1b2　
-        """
+             p1
+    """
         # 動きか方を表示
         print("w: 上に移動")
         print("a: 左に移動")
