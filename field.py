@@ -9,9 +9,6 @@ class Field:
 
     Attributes:
         players (list[Player]): プレイヤーのリスト
-        enemies (list[Enemy]): 敵のリスト
-        foods (list[Food]]): アイテムのリスト
-        blocks (list[Block]): アイテムのリスト
         field (list[list[str]]): フィールドの情報
         f_size (int): フィールドのサイズ
     """
@@ -26,23 +23,16 @@ class Field:
 
         Args:
             players (list[Player]): プレイヤーのリスト
-            enemies (list[Enemy]): 敵のリスト
-            foods (list[Food]): アイテムのリスト
-            blocks (list[Block]): ブロックのリスト
             f_size (int): フィールドのサイズ
         """
-
-        pass
-    """
+        
+    
         self.f_size = f_size
         self.field = [["　" for _ in range(f_size)] for _ in range(f_size)]
         self.players = players
-        self.enemies = enemies
-        self.foods = foods
-        self.blocks = blocks
         # それぞれのアイテムの位置をFieldに反映
         self.update_field()
-        """
+    
 
     def update_field(self) -> list[list[str]]:
         """
@@ -62,27 +52,16 @@ class Field:
             >>> field.update_field()[2]
             ['\\u3000', '\\u3000', '\\u3000']
         """
-        pass
-        """
         # fieldを一旦すべて空白にする
         for i in range(len(self.field)):
             for j in range(len(self.field[i])):
                 self.field[i][j] = "　"
         #  Fieldを更新する処理を記述
-        for food in self.foods:
-            if food.status:
-                self.field[food.now_y][food.now_x] = food.icon
-        for enemy in self.enemies:
-            if enemy.status:
-                self.field[enemy.now_y][enemy.now_x] = enemy.icon
-        for block in self.blocks:
-            if block.status:
-                self.field[block.now_y][block.now_x] = block.icon
         for player in self.players:
             if player.status:
                 self.field[player.now_y][player.now_x] = player.icon
         return self.field
-        """
+
 
     def display_field(self) -> None:
         """
@@ -99,8 +78,6 @@ class Field:
             d: 右に移動
              p1
     """
-        pass
-    """
         # 動きか方を表示
         print("w: 上に移動")
         print("a: 左に移動")
@@ -114,7 +91,6 @@ class Field:
             row_str = "".join(row)
             row_str = row_str.ljust(max_width)
             print(row_str)
-            """
 
 
 if __name__ == "__main__":

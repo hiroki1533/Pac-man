@@ -29,7 +29,7 @@ class Game:
         self.player = []
         self.field = None
         self.setup(params)  # ゲームの初期設定
-        self.start()  # ゲームのメインループ
+
 
     def setup(self, params: Parameters) -> None:
         """ゲームの初期設定
@@ -54,7 +54,6 @@ class Game:
         Returns:
             str: ゲーム終了時のメッセージ (例: "Game Over!", "Game Clear!")
         """
-        pass
         # ゲームのメインループ
         while True:
             #  フィールドを表示
@@ -76,3 +75,9 @@ class Game:
 
             # 終了条件のチェック
             # 例えば、全ての食べ物が消えたり、敵とプレイヤーが衝突したりしたら終了する処理を追加する
+
+
+if __name__ == "__main__":
+    params = Parameters()
+    game = Game(params)
+    game.start()
