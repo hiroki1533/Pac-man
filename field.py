@@ -1,6 +1,5 @@
 from item import Item
 from player import Player
-from enemy import Enemy
 
 
 class Field:
@@ -19,7 +18,6 @@ class Field:
     def __init__(
             self,
             players: list[Player],
-            enemies: list[Enemy],
             f_size: int = 6) -> None:
         """
         Fieldクラスの初期化を行う関数
