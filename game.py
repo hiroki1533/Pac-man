@@ -40,7 +40,7 @@ class Game:
         """
         f_size = params.field_size  # フィールドのサイズ
         # フィールドの初期化
-        self.players = [Player(1, 1)]
+        self.players = [Player(1, 10)]
         self.field = Field(
             self.players,
             f_size)

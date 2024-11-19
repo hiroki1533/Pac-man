@@ -18,7 +18,6 @@ class Player(Item):
     """
 
     def __init__(self, x, y) -> None:
-        pass
         super().__init__(x, y)
         self.icon = "😶"
 
@@ -47,7 +46,9 @@ class Player(Item):
         """
         self.next_x = self.now_x + dir[0]
         self.next_y = self.now_y + dir[1]
-        return (self.next_x, self.next_y)
+        self.now_x = self.next_x
+        self.now_y = self.next_y
+        return (self.now_x, self.now_y)
 
     def change_face_good(self) -> None:
         """
