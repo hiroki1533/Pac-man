@@ -1,4 +1,6 @@
 import time
+from random import randint
+from enemy import Enemy
 from player import Player
 from field import Field
 from user_input import UserInput
@@ -27,6 +29,7 @@ class Game:
         """
 
         self.player = []
+        self.enemies: list[Enemy] = []
         self.field = None
         self.setup(params)  # ゲームの初期設定
 
@@ -40,9 +43,13 @@ class Game:
         """
         f_size = params.field_size  # フィールドのサイズ
         # フィールドの初期化
+        e_num = params.enemy_num
         self.players = [Player(1, 10)]
+        self.enemies = [
+            Enemy(randint(1, f_size - 2), randint(1, f_size - 2))
+            for _ in range(e_num)]
         self.field = Field(
-            self.players,
+            self.players,self.enemies,
             f_size)
 
     def start(self) -> str:
@@ -65,6 +72,10 @@ class Game:
                 # キー入力を受け取る
                 key = UserInput.get_user_input()
                 player.get_next_pos(key)
+
+            # 敵の移動を決定
+            for enemy in self.enemies:
+                enemy.get_next_pos()
                 
                 # fieldを更新
             self.field.update_field()

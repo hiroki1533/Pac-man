@@ -1,6 +1,6 @@
 from item import Item
 from player import Player
-
+from enemy import Enemy
 
 class Field:
     """Fieldクラス
@@ -18,6 +18,7 @@ class Field:
     def __init__(
             self,
             players: list[Player],
+            enemies: list[Enemy],
             f_size: int = 6) -> None:
         """
         Fieldクラスの初期化を行う関数
@@ -31,6 +32,7 @@ class Field:
         self.f_size = f_size
         self.field = [["　" for _ in range(f_size)] for _ in range(f_size)]
         self.players = players
+        self.enemies = enemies
         # それぞれのアイテムの位置をFieldに反映
         self.update_field()
     
@@ -70,6 +72,9 @@ class Field:
             for j in range(len(self.field[i])):
                 self.field[i][j] = "　"
         #  Fieldを更新する処理を記述
+        for enemy in self.enemies:
+            if enemy.status:
+                self.field[enemy.now_y][enemy.now_x] = enemy.icon
         for player in self.players:
             if player.status:
                 self.field[player.now_y][player.now_x] = player.icon
