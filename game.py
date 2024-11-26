@@ -65,7 +65,7 @@ class Game:
                 # キー入力を受け取る
                 key = UserInput.get_user_input()
                 player.get_next_pos(key)
-
+                
                 # fieldを更新
             self.field.update_field()
 
@@ -78,6 +78,4 @@ class Game:
 
 
 if __name__ == "__main__":
-    params = Parameters()
-    game = Game(params)
-    game.start()
+    main()
