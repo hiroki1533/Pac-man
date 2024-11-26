@@ -135,6 +135,7 @@ class Field:
             a: 左に移動
             s: 下に移動
             d: 右に移動
+            ______________________
              p1
     """
         # 動きか方を表示
@@ -142,7 +143,7 @@ class Field:
         print("a: 左に移動")
         print("s: 下に移動")
         print("d: 右に移動")
-
+        print("______________________")
         # self.fieldを表示する処理を記述
         max_width = max(len(row) for row in self.field)  # フィールド内の最大幅を取得
 
