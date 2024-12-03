@@ -3,6 +3,7 @@ from random import randint
 from enemy import Enemy
 from player import Player
 from field import Field
+from block import Block
 from user_input import UserInput
 from config import Parameters
 import logging
@@ -31,6 +32,7 @@ class Game:
         self.player = []
         self.enemies: list[Enemy] = []
         self.field = None
+        self.blocks: list[Block] = []
         self.setup(params)  # ゲームの初期設定
 
 
@@ -44,12 +46,23 @@ class Game:
         f_size = params.field_size  # フィールドのサイズ
         # フィールドの初期化
         e_num = params.enemy_num
-        self.players = [Player(1, 10)]
+        self.players = [Player(1, 1)] #player 初期位置
         self.enemies = [
             Enemy(randint(1, f_size - 2), randint(1, f_size - 2))
             for _ in range(e_num)]
+        # 6*6のフィールドの周りを壁とするBlockインスタンスを生成
+        if f_size < 4:
+            raise ValueError("field_size must be greater than 4")
+        self.blocks = [
+            Block(x, y)
+            for x in range(f_size)
+            for y in range(f_size)
+            if x == 0 or x == f_size - 1 or y == 0 or y == f_size - 1
+        ]
         self.field = Field(
-            self.players,self.enemies,
+            self.players,
+            self.enemies,
+            self.blocks,
             f_size)
 
     def start(self) -> str:
@@ -76,6 +89,15 @@ class Game:
             # 敵の移動を決定
             for enemy in self.enemies:
                 enemy.get_next_pos()
+            
+             # プレイヤーと敵の移動
+            for item in self.players + self.enemies:
+                # ブロックとの衝突判定
+                bumped_item = self.field.check_bump(item, list(self.blocks))
+                if bumped_item is not None:
+                    item.update_pos(stuck=True)
+                else:
+                    item.update_pos()
                 
                 # fieldを更新
             self.field.update_field()
