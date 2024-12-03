@@ -55,18 +55,16 @@ class Field:
             >>> e2 = Enemy(1, 1)
             >>> e2.icon = "e2"
             >>> e = [e1, e2]
-            >>> f = [Food(0, 1)]
-            >>> f[0].icon = "f1"
             >>> b1 = Block(0, 2)
             >>> b1.icon = "b1"
             >>> b2 = Block(1, 2)
             >>> b2.icon = "b2"
             >>> b = [b1, b2]
-            >>> field = Field(p, e, f, b, 3)
+            >>> field = Field(p, e, b, 3)
             >>> field.update_field()[0]
             ['\\u3000', 'p1', 'e1']
             >>> field.update_field()[1]
-            ['f1', 'e2', '\\u3000']
+            ['\\u3000', 'e2', '\\u3000']
             >>> field.update_field()[2]
             ['\\u3000', '\\u3000', '\\u3000']
         """
@@ -133,14 +131,12 @@ class Field:
             >>> e2 = Enemy(1, 1)
             >>> e2.icon = "e2"
             >>> e = [e1, e2]
-            >>> f = [Food(0, 1)]
-            >>> f[0].icon = "f1"
             >>> b1 = Block(0, 2)
             >>> b1.icon = "b1"
             >>> b2 = Enemy(1, 2)
             >>> b2.icon = "b2"
             >>> b = [b1, b2]
-            >>> field = Field(p, e, f, b, 3)
+            >>> field = Field(p, e, b, 3)
             >>> field.display_field()
             w: 上に移動
             a: 左に移動
